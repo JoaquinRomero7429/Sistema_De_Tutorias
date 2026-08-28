@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import Home from './components/home.vue'
+import DetalleCurso from './components/detalle-curso.vue';
 </script>
