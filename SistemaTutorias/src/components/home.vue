@@ -88,7 +88,7 @@
             <line x1="34" y1="36" x2="86" y2="36" stroke="#C7CCE4" stroke-width="2.5" stroke-linecap="round"/>
             <line x1="34" y1="48" x2="72" y2="48" stroke="#C7CCE4" stroke-width="2.5" stroke-linecap="round"/>
             <line x1="34" y1="60" x2="78" y2="60" stroke="#C7CCE4" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="88" cy="70" r="16" fill="#A897E8"/>
+            <circle cx="88" cy="70" r="16" fill="#7B2D8E"/>
             <line x1="88" y1="63" x2="88" y2="77" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
             <line x1="81" y1="70" x2="95" y2="70" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
           </svg>
@@ -125,14 +125,20 @@ const iniciales = computed(() =>
 const notificaciones = ref(2)
 
 const cursos = ref([
-  { id: 5, nombre: '5to año' },
-  { id: 3, nombre: '3er año' }
+  { id: 1, nombre: '1er año' },
+  { id: 2, nombre: '2do año' },
+  { id: 3, nombre: '3er año' },
+  { id: 4, nombre: '4to año' },
+  { id: 5, nombre: '5to año' }
 ])
 
 // mock — reemplazar por datos reales del backend
 const materiasPorCurso = ref({
-  5: [{ id: 1, nombre: 'Matemática', citaciones: 3 }],
-  3: []
+  1: [],
+  2: [],
+  3: [],
+  4: [],
+  5: [{ id: 1, nombre: 'Matemática', citaciones: 3 }]
 })
 
 const cursoActivo = ref(null)
@@ -170,26 +176,26 @@ html, body, #app {
 </style>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 * { box-sizing: border-box; }
 
 .app-shell {
-  --ink: #7c6bc4;         /* lila medio, para textos y acentos fuertes */
-  --ink-light: #9384d4;
-  --indigo: #a897e8;      /* lila principal, botones/activos */
-  --indigo-soft: #f3f0fc; /* lila muy claro, fondos suaves */
-  --amber: #d6b8f5;       /* lila-rosado claro, para badges/detalles */
-  --bg: #faf9ff;          /* fondo general, casi blanco con tinte lila */
+  --ink: #5a1f68;         /* violeta oscuro, para textos y acentos fuertes */
+  --ink-light: #7b2d8e;
+  --indigo: #7b2d8e;      /* violeta principal (el de la muestra), botones/activos */
+  --indigo-soft: #f4e9f6; /* tinte muy claro del mismo violeta, fondos suaves */
+  --amber: #b25fc4;       /* variante más clara del violeta, para badges/detalles */
+  --bg: #fdfbfe;          /* fondo general, blanco con tinte apenas violeta */
   --card: #ffffff;
-  --border: #e8e2f8;
-  --text: #4a3f7a;
-  --text-soft: #9089b8;
+  --border: #e9d9ec;
+  --text: #3d2444;
+  --text-soft: #8d7594;
 
   display: flex;
   height: 100vh;
   background: var(--bg);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
   color: var(--text);
 }
 
@@ -221,14 +227,14 @@ html, body, #app {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 0.85rem;
   flex-shrink: 0;
 }
 
 .brand-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.15;
@@ -280,7 +286,7 @@ html, body, #app {
 }
 
 .course-year {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 0.75rem;
   width: 24px;
@@ -362,7 +368,7 @@ html, body, #app {
 }
 
 .breadcrumb-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   margin: 2px 0 0;
@@ -412,7 +418,7 @@ html, body, #app {
   border-radius: 50%;
   background: var(--ink);
   color: #fff;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 0.8rem;
   display: flex;
@@ -474,7 +480,7 @@ html, body, #app {
 }
 
 .materia-name {
-  font-family: 'Fraunces', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--ink);
@@ -504,7 +510,7 @@ html, body, #app {
 .empty-illustration { margin-bottom: 8px; }
 
 .empty-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--ink);
