@@ -1,0 +1,64 @@
+La app compila y abre.
+
+## Preguntas más importantes
+
+1. **¿Quién usa la aplicación?**
+
+   En algunas pantallas aparece “Profe Nacho”, en otra “Emilia” y en otra “Nombre de Usuario / Rol”. Preguntaría si está pensada para docentes, estudiantes, preceptores o administradores, y qué puede hacer cada uno.
+
+2. **¿Cuál es el recorrido principal?**
+
+   Pediles que muestren este flujo completo:
+
+   `Inicio de sesión → elegir año → elegir materia → ver tutorías → crear o enviar una tutoría`
+
+   Actualmente ese recorrido no está completamente conectado.
+
+3. **¿Cuál es la pantalla principal definitiva?**
+
+   [home.vue](C:/Users/Dell/Documents/2026/0_ProA2026/5/Sistema_De_TutoriasJOAQUIN/SistemaTutorias/src/components/home.vue:1) y [Cursos.vue](C:/Users/Dell/Documents/2026/0_ProA2026/5/Sistema_De_TutoriasJOAQUIN/SistemaTutorias/src/components/Cursos.vue:1) parecen dos versiones distintas de la misma pantalla. Tienen diseños, años, usuarios y datos diferentes.
+
+4. **¿Qué diferencia hay entre curso, año, materia, espacio curricular, tutoría y citación?**
+
+   Esos términos aparecen mezclados. Conviene que ellos definan cada concepto con un ejemplo antes de seguir programando.
+
+5. **¿Qué botones deberían funcionar en esta primera versión?**
+
+   Que hagan una lista concreta: “este botón navega”, “este solamente muestra una maqueta” o “este todavía no está implementado”.
+
+6. **¿Qué información debe mantenerse al cambiar de pantalla?**
+
+   Al seleccionar Historia o Inglés, el detalle debería saber qué materia y año se eligieron. Ahora el detalle siempre muestra Matemática.
+
+## Cosas que parecen rotas en la interfaz
+
+- **Inicio de sesión no está hecho.** La ruta muestra todavía el ejemplo en inglés de Vue/Vite y espera una propiedad `msg` que nadie le proporciona: [InicioSesion.vue:1](C:/Users/Dell/Documents/2026/0_ProA2026/5/Sistema_De_TutoriasJOAQUIN/SistemaTutorias/src/components/InicioSesion.vue:1).
+
+- **“Ver espacio” no abre nada.** Solamente escribe en la consola: [home.vue:158](C:/Users/Dell/Documents/2026/0_ProA2026/5/Sistema_De_TutoriasJOAQUIN/SistemaTutorias/src/components/home.vue:158).
+
+- **La materia seleccionada se pierde.** `Cursos.vue` intenta enviar un `id`, pero la ruta `/detalle-curso` no acepta ese parámetro: [Cursos.vue:240](C:/Users/Dell/Documents/2026/0_ProA2026/5/Sistema_De_TutoriasJOAQUIN/SistemaTutorias/src/components/Cursos.vue:240) y [router.js:35](C:/Users/Dell/Documents/2026/0_ProA2026/5/Sistema_De_TutoriasJOAQUIN/SistemaTutorias/src/router.js:35).
+
+- **El detalle siempre muestra Matemática**, independientemente de la materia elegida: [detalle-curso.vue:153](C:/Users/Dell/Documents/2026/0_ProA2026/5/Sistema_De_TutoriasJOAQUIN/SistemaTutorias/src/components/detalle-curso.vue:153).
+
+- **Cambiar el año en el detalle no cambia las tutorías.** Solo cambia el texto del año; conserva Matemática y la misma tutoría de ejemplo.
+
+- **“Agregar curso” informa que guardó, pero no agrega nada.** Espera 800 ms, muestra éxito, limpia el formulario y los datos desaparecen: [Agregar-curso.vue:291](C:/Users/Dell/Documents/2026/0_ProA2026/5/Sistema_De_TutoriasJOAQUIN/SistemaTutorias/src/components/Agregar-curso.vue:291). Sin backend está bien simular, pero deberían explicitar que es una demostración.
+
+- **La pantalla para agregar cursos no tiene un acceso visible claro.** Existe la ruta `/agregar-curso`, pero no encontré un botón que lleve hasta ella.
+
+- **Cerrar sesión funciona solamente desde `Cursos.vue`.** En las demás pantallas solo imprime un mensaje en la consola.
+
+- **Agregar, ver, enviar tutorías y ver borradores no realizan ninguna acción visible.** Son botones de maqueta en [detalle-curso.vue:177](C:/Users/Dell/Documents/2026/0_ProA2026/5/Sistema_De_TutoriasJOAQUIN/SistemaTutorias/src/components/detalle-curso.vue:177).
+
+- **Borrar sí actúa**, pero elimina inmediatamente, sin confirmación, y reaparece al recargar la página.
+
+- **Perfil y notificaciones parecen botones, pero no hacen nada.** Hay que preguntar si son parte del alcance o solo decoración.
+
+## Inconsistencias que deberían explicar
+
+- La portada contiene años 1.º a 5.º.
+- La lista de materias solamente contiene 3.º y 5.º.
+- El formulario permite 1.º a 6.º.
+- “Nombre del curso” utiliza “Matemática” como ejemplo, pero después existe otro campo llamado “Materia”.
+- Hay diferentes diseños visuales y diferentes nombres de usuario entre pantallas.
+- El botón “Volver” depende del historial del navegador; si se entra directamente por una URL, puede no volver al lugar esperado.
