@@ -4,7 +4,7 @@ import { RouterLink, RouterView, useRoute } from 'vue-router'
 
 const route = useRoute()
 const menuOpen = ref(false)
-const pageTitle = computed(() => ({ inicio: 'Inicio', cursos: 'Cursos', 'nuevo-curso': 'Crear curso', 'detalle-curso': 'Detalle del curso', reservas: 'Reservas' }[route.name] ?? 'Tutorías'))
+const pageTitle = computed(() => ({ inicio: 'Inicio', cursos: 'Cursos', 'nuevo-curso': 'Crear curso', 'detalle-curso': 'Detalle del curso', reservas: 'Reservas', perfil: 'Mi perfil' }[route.name] ?? 'Tutorías'))
 </script>
 
 <template>
@@ -16,6 +16,7 @@ const pageTitle = computed(() => ({ inicio: 'Inicio', cursos: 'Cursos', 'nuevo-c
         <RouterLink to="/" :class="{ active: route.name === 'inicio' }" @click="menuOpen = false"><span>⌂</span> Inicio</RouterLink>
         <RouterLink to="/cursos" :class="{ active: ['cursos', 'detalle-curso', 'nuevo-curso'].includes(route.name) }" @click="menuOpen = false"><span>▤</span> Cursos</RouterLink>
         <RouterLink to="/reservas" :class="{ active: route.name === 'reservas' }" @click="menuOpen = false"><span>◷</span> Reservas</RouterLink>
+        <RouterLink to="/perfil" :class="{ active: route.name === 'perfil' }" @click="menuOpen = false"><span>◉</span> Perfil</RouterLink>
       </nav>
       <div class="sidebar-bottom"><span class="local-dot"></span><div><strong>Guardado local</strong><small>En este navegador</small></div></div>
     </aside>
