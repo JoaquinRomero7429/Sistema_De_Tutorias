@@ -1,46 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Home from './components/home.vue'
-import InicioSesion from './components/InicioSesion.vue'
-import Cursos from './components/Cursos.vue'
-import AgregarCurso from './components/Agregar-curso.vue'
-import DetalleCurso from './components/detalle-curso.vue'
-
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-
-  {
-    path: '/inicio-sesion',
-    name: 'inicio-sesion',
-    component: InicioSesion
-  },
-
-  {
-    path: '/cursos',
-    name: 'cursos',
-    component: Cursos
-  },
-
-  {
-    path: '/agregar-curso',
-    name: 'agregar-curso',
-    component: AgregarCurso
-  },
-
-  {
-    path: '/detalle-curso',
-    name: 'detalle-curso',
-    component: DetalleCurso
-  }
-]
+import Inicio from './src/views/Inicio.vue'
+import Cursos from './src/views/Cursos.vue'
+import NuevoCurso from './src/views/NuevoCurso.vue'
+import DetalleCurso from './src/views/DetalleCurso.vue'
+import Reservas from './src/views/Reservas.vue'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes: [
+    { path: '/', name: 'inicio', component: Inicio },
+    { path: '/cursos', name: 'cursos', component: Cursos },
+    { path: '/cursos/nuevo', name: 'nuevo-curso', component: NuevoCurso },
+    { path: '/cursos/:id', name: 'detalle-curso', component: DetalleCurso, props: true },
+    { path: '/reservas', name: 'reservas', component: Reservas },
+    { path: '/:pathMatch(.*)*', redirect: '/' },
+  ],
+  scrollBehavior: () => ({ top: 0 }),
 })
 
 export default router

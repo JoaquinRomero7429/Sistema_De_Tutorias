@@ -1,4 +1,32 @@
-# SistemaTutorias
+# Sistema de Tutorías
+
+Aplicación web para organizar cursos, publicar horarios de tutoría y registrar reservas.
+
+## Ejecutar
+
+Desde esta carpeta:
+
+```sh
+npm ci
+npm run dev
+```
+
+Para compilar y revisar la versión de producción:
+
+```sh
+npm run build
+npm run preview
+```
+
+## Funciones
+
+- Panel con cursos y próximos horarios.
+- Búsqueda y detalle de cursos.
+- Alta de cursos y publicación de tutorías.
+- Reserva de lugares, agenda de reservas y cancelación.
+- Persistencia local en el navegador.
+
+La aplicación funciona en modo local: los datos se guardan en el navegador y dispositivo donde se usa. Este repositorio no contiene backend ni autenticación conectados, por lo que los datos no se comparten entre dispositivos y no debe usarse como sistema de acceso seguro en producción.
 
 This template should help get you started developing with Vue 3 in Vite.
 
